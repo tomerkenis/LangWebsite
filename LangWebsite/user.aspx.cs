@@ -14,7 +14,7 @@ public partial class user : System.Web.UI.Page
     public static string usernameCurrent = "";
     public static string emailCurrent = "";
     public static string commentsCurrent = "";
-    //public static string ageCurrent = "";
+    public static string ageCurrent = "";
     public static string genderCurrent = "";
     //public static string languagesCurrent = "";
 
@@ -30,7 +30,7 @@ public partial class user : System.Web.UI.Page
             usernameCurrent = (String) row.getRowItems()[1];
             emailCurrent = (String) row.getRowItems()[3];
             commentsCurrent = (String) row.getRowItems()[4];
-            //ageCurrent = (String) row.getRowItems()[5];
+            ageCurrent = (String)row.getRowItems()[5];
             genderCurrent = (String) row.getRowItems()[6];
         }
 
@@ -39,15 +39,19 @@ public partial class user : System.Web.UI.Page
         if (Request.Form["update"] != null)
         {
             Dictionary<String, String> map = new Dictionary<String, String>();
-            map.Add("username", Request.Form["username-new"]);
+            //map.Add("username", Request.Form["username-new"]);
             map.Add("password", Request.Form["password-new"]);
-            map.Add("email", Request.Form["email-new"]);
+            //map.Add("email", Request.Form["email-new"]);
             map.Add("comments", Request.Form["comments"]);
             map.Add("age", Request.Form["age"]);
             map.Add("gender", Request.Form["gender"]);
-            map.Add("languages", Request.Form["languages"]);
+            //map.Add("languages", Request.Form["languages"]);
 
-            string sql = "update [Users] set [password]=''" + map["password"] + "' where email='" + Session["email"] + "'"; //TODO: update all
+            string sql = "update [Users] set [password]='" + map["password"] + 
+                "',[comments]='" + map["comments"] +
+                "',[gender]='" + map["gender"] +
+                "',[age]='" + map["age"] +
+                "' where email='" + Session["email"] + "'"; //TODO: update all
 
             int rowsAffected = (int) new SQLConnection().executeCommand(sql).end()[0];
 
@@ -55,8 +59,8 @@ public partial class user : System.Web.UI.Page
                 msgRegister = "<font color='blue'>You successfully updated your profile!</font>";
             else
                 msgRegister = "<font color='red'>Update did not succeed.</font>";
-            
 
+            Response.Redirect("index.aspx");
         }
 
         if (Request.Form["login"] != null)
@@ -92,6 +96,7 @@ public partial class user : System.Web.UI.Page
                 MyAdoHelper.DoQuery("Database.mdf", "sql");
                 Session["user"] = username;
             }
+            Response.Redirect(Request.RawUrl);
 
         }
 
