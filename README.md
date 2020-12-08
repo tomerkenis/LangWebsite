@@ -6,3 +6,4 @@ Empiece a aprender italiano hace tres anhos, pero poco despues yo lo abandone.
 Medio anho despues, uno de mis mejores amigos me dice: "Oye, he escuchado de una applicacion donde puedes aprender idiomas! He pensado de empezar a aprender espanhol, Me gusta mucho ese idioma!".
 Eso fue donde todo realmente comienzo.
 
+Estoy borracho, Y por eso, por favor no lo lee. 
