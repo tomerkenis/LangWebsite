@@ -22,7 +22,7 @@ function validateEmail() {
     if (email.match(/^.+@.+\..+$/) && // checks if the format is: _@_._ (_ is at least one character)
         !email.match(" ") && // checks if there are no spaces
         email.match(/@/g).length == 1 && // checks if there is exactly one '@'
-        email.indexOf("@") + 1 != email.indexOf(".")) { // checks that '.' isn't right after '@' 
+        email.charAt(email.indexOf("@") + 1) != ".") { // checks that '.' isn't right after '@' 
         $('.error-email').hide();
         return true;
     } else {
@@ -35,7 +35,7 @@ function validateEmail() {
 
  function validateUsername() {
      var name = $('input[id="username-new"]').val();
-     if (name.length != 0) {
+     if (name.length >= 3) {
          $('.error-username').hide();
          return true;
      }
@@ -46,5 +46,8 @@ function validateEmail() {
 }
 
 function validateAll() {
-    return validateEmail() && validateUsername() && validatePassword();
+    emailValidation = validateEmail();
+    usernameValidation = validateUsername();
+    passwordValidation = validatePassword();
+    return emailValidation && usernameValidation && passwordValidation;
  }

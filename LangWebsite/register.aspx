@@ -69,7 +69,7 @@
                     <label for="username-new">Username:</label>
                     <input type="text" name="username-new" id="username-new" class="sign-up-input" />
                     <p class="error-username error">
-                        Your must enter a name!
+                        You must enter a name atleast 3 letters long!
                     </p>
                 </div>
                 <div class="form-text">
